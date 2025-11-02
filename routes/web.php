@@ -4,7 +4,30 @@ use Illuminate\Support\Facades\Route;
 use Laravel\Fortify\Features;
 use Livewire\Volt\Volt;
 use App\Http\Controllers\AppointmentController;
+use App\Http\Controllers\BookingController;
+use App\Http\Controllers\AdminController;
 
+
+Route::get('/patient/booking', [BookingController::class, 'create'])->name('patient.booking');
+Route::post('/patient/booking', [BookingController::class, 'store'])->name('bookings.store');
+
+// Fixed: Use the BookingController to provide $bookings data to the view
+Route::get('/doctor/appointment', [BookingController::class, 'index'])->name('doctor.appointment');
+Route::post('/doctor/accept/{id}', [BookingController::class, 'accept'])->name('bookings.accept');
+Route::post('/doctor/decline/{id}', [BookingController::class, 'decline'])->name('bookings.decline');
+
+Route::get('/admin/edit', [AdminController::class, 'index'])->name('admin.edit');
+Route::put('/admin/update/{id}', [AdminController::class, 'update'])->name('admin.update');
+Route::delete('/admin/delete/{id}', [AdminController::class, 'delete'])->name('admin.delete');
+
+//fn
+Route::get('/fn/doctor/appointment', function () {
+    return view('fn.doctor.appointment');
+})->name('fn.doctor.appointment');
+
+Route::get('/fn/admin/booking', function () {
+    return view('fn.admin.booking');
+})->name('fn.admin.booking');
 
 Route::get('/', function () {
     return view('welcome');
@@ -14,13 +37,40 @@ Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])
     ->name('dashboard');
 
+Route::get('/trial', function () {
+    return view('trial');
+})->name('trial');
+
+Route::get('/dashboard2', function () {
+    return view('dashboard2');
+})->name('dashboard2');
+
 Route::get('/booking', function () {
     return view('booking');
 })->name('booking');
 
-Route::get('/appointments', function () {
-    return view('appointments');
-})->name('appointments');
+//The three views
+Route::get('/user/information', function () {
+    return view('user.information');
+})->name('user.information');
+
+Route::get('/user/introduction', function () {
+    return view('user.introduction');
+})->name('user.introduction');
+
+Route::get('/user/login', function () {
+    return view('user.login');
+})->name('user.login');
+
+Route::get('/user/booking', function () {
+    return view('user.booking');
+})->name('user.booking');
+
+Route::get('/admin/booking', function () {
+    return view('admin.booking');
+})->name('admin.booking');
+
+Route::get('/appointment', [AppointmentController::class, 'index'])->name('appointment');
 
 //admin
 Route::get('/admin', [AppointmentController::class, 'adminIndex'])->name('admin.index');

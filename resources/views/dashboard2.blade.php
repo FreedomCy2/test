@@ -5,34 +5,22 @@
 
         <div class="flex gap-4">
             <!-- Button 1 -->
-            <a href="/booking"
+            <a href="/patient/booking"
                class="px-6 py-3 bg-blue-600 text-black font-bold rounded-lg hover:bg-blue-700 transition">
-                Appointments
+                Booking
             </a>
 
             <!-- Button 2 -->
-            <a href="/appointment"
+            <a href="/doctor/appointment"
                class="px-6 py-3 bg-green-600 text-black font-bold rounded-lg hover:bg-green-700 transition">
                 Appointment
             </a>
 
             <!-- Button 3 -->
-            <a href="/admin"
+            <a href="/admin/edit"
                class="px-6 py-3 bg-purple-600 text-black font-bold rounded-lg hover:bg-purple-700 transition">
-                Admin appointments
+                Admin 
             </a>
-
-            <!-- Button 4 -->
-            <a href="/trial"
-               class="px-6 py-3 bg-purple-600 text-black font-bold rounded-lg hover:bg-purple-700 transition">
-                FinalSite
-            </a>
-       
-            <!-- Button 5 -->
-            <a href="/dashboard2"
-               class="px-6 py-3 bg-purple-600 text-black font-bold rounded-lg hover:bg-purple-700 transition">
-                Working for example
-            </a>            
 
         </div>
     </div>
